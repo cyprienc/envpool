@@ -53,12 +53,10 @@ def _make_xla_function(
   out_specs = _normalize_specs(out_specs)
   cpu_capsule, gpu_capsule = capsules
   xla_client.register_custom_call_target(
-    f"{type(obj).__name__}_{id(obj)}_{name}_cpu".encode(),
-    cpu_capsule,
-    platform="cpu"
+    f"{type(obj).__name__}_{id(obj)}_{name}_cpu", cpu_capsule, platform="cpu"
   )
   xla_client.register_custom_call_target(
-    f"{type(obj).__name__}_{id(obj)}_{name}_gpu".encode(),
+    f"{type(obj).__name__}_{id(obj)}_{name}_gpu",
     gpu_capsule,
     platform="gpu",
   )
